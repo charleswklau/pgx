@@ -632,7 +632,7 @@ func (c *Conn) PrepareEx(name, sql string, opts *PrepareExOptions) (ps *Prepared
 		if ps, ok := c.preparedStatements[name]; ok && ps.SQL == sql {
 			return ps, nil
 		}
-		identifier = "identifier" + strconv.Itoa(len(c.preparedStatements))
+		identifier = strconv.Itoa(len(c.preparedStatements))
 	}
 
 	if c.shouldLog(LogLevelError) {
